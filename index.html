@@ -425,10 +425,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 </footer>
 
 <script>
-  // Where sign-ups are sent once the page is hosted publicly.
-  // Leave empty for preview: the form validates and shows the thank-you state but saves nothing.
-  // Example (Loops form endpoint): "https://app.loops.so/api/newsletter-form/YOUR_FORM_ID"
-  const SIGNUP_ENDPOINT = "";
+  // Loops form endpoint that sign-ups are sent to. Set it to "" to preview without saving anything.
+  const SIGNUP_ENDPOINT = "https://app.loops.so/api/newsletter-form/cmnugbcri005j0i0p9e5jurax";
 
   const form = document.getElementById("signup-form");
   const err = document.getElementById("form-error");
@@ -451,7 +449,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       if (SIGNUP_ENDPOINT) {
         const body = new URLSearchParams({
           firstName, email,
-          userGroup: "2027-vision-board-social",
+          userGroup: "vision_board",
           source: "vision-board-interest-page",
           futureEmailsOptIn: String(optIn),
           boardType
@@ -461,7 +459,14 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body
         });
-        if (!res.ok) throw new Error("bad status " + res.status);
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          const msg = String(data.message || "");
+          // Someone signing up twice is still on the list, so treat it as a success.
+          if (!/already/i.test(msg)) {
+            throw new Error(res.status === 429 ? "rate-limited" : (msg || "bad status " + res.status));
+          }
+        }
       }
       document.getElementById("thanks-name").textContent = firstName;
       document.getElementById("thanks-next").textContent = boardType === "digital"
@@ -470,7 +475,9 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       form.hidden = true;
       document.getElementById("thanks").hidden = false;
     } catch (x) {
-      err.textContent = "Something went wrong saving your spot. Please try again in a minute.";
+      err.textContent = x.message === "rate-limited"
+        ? "Lots of sign-ups at once. Please try again in a minute."
+        : "Something went wrong saving your spot. Please try again in a minute.";
       btn.disabled = false;
       btn.textContent = "Save my spot";
     }
