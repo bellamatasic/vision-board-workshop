@@ -10,13 +10,9 @@ Landing and sign-up page for **The 2027 Vision Board Social**, a free virtual ev
 
 The form asks for first name, email, how the person is making their board (`physical`, `digital` or `unsure`), and whether they want future emails.
 
-Sign-ups aren't saved anywhere yet. To connect the form, set `SIGNUP_ENDPOINT` near the bottom of `index.html` to a Loops form endpoint:
+Sign-ups go to the Loops form endpoint set in `SIGNUP_ENDPOINT` near the bottom of `index.html`. Set `SIGNUP_ENDPOINT` to `""` to preview the page without saving anything.
 
-```js
-const SIGNUP_ENDPOINT = "https://app.loops.so/api/newsletter-form/YOUR_FORM_ID";
-```
-
-Each sign-up is sent with `userGroup=2027-vision-board-social`, `source=vision-board-interest-page`, `futureEmailsOptIn` and `boardType`. `boardType` is what lets reminders go to the right group.
+Each sign-up is sent with `userGroup=vision_board`, `source=vision-board-interest-page`, `futureEmailsOptIn` (boolean) and `boardType` (`physical`, `digital` or `unsure`). `boardType` is what lets reminders go to the right group.
 
 ## Preview locally
 
