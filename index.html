@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The 2027 Vision Board Social</title>
+<meta name="description" content="A free, virtual evening in December to reflect on 2026, picture 2027, and build your vision board together.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@500;700&display=swap">
+<style>
+/* Layout: an evening invitation. Collage hero of cut-paper tiles, then a quiet single column: the evening, the four parts, the sign-up card. */
+:root {
+  --bg: #f6f1f8;          /* pale lilac paper */
+  --surface: #ffffff;
+  --ink: #2a1b33;         /* plum ink */
+  --muted: #6c5a75;
+  --line: #e2d6e8;
+  --accent: #c2477a;      /* evening rose */
+  --accent-ink: #ffffff;
+  --gold: #c99a3b;        /* candlelight */
+  --tile-1: #f3c9d8;
+  --tile-2: #d9cdf4;
+  --tile-3: #f6e2b8;
+  --tile-4: #cfe6dc;
+  --tile-ink: #2a1b33;
+  --shadow: 0 10px 30px -12px rgba(42, 27, 51, .28);
+  --f-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --f-body: "DM Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --f-hand: "Caveat", "Bradley Hand", "Segoe Print", cursive;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #170f1d; --surface: #21172a; --ink: #f3e9f6; --muted: #b9a6c3; --line: #3a2c44;
+    --accent: #ee7aa8; --accent-ink: #1b0f20; --gold: #e3bb64;
+    --tile-1: #5a2a42; --tile-2: #3d3366; --tile-3: #5b4720; --tile-4: #23493d; --tile-ink: #f6eef8;
+    --shadow: 0 12px 34px -12px rgba(0, 0, 0, .7);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #170f1d; --surface: #21172a; --ink: #f3e9f6; --muted: #b9a6c3; --line: #3a2c44;
+  --accent: #ee7aa8; --accent-ink: #1b0f20; --gold: #e3bb64;
+  --tile-1: #5a2a42; --tile-2: #3d3366; --tile-3: #5b4720; --tile-4: #23493d; --tile-ink: #f6eef8;
+  --shadow: 0 12px 34px -12px rgba(0, 0, 0, .7);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--f-body);
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+/* ---------- Hero ---------- */
+.hero { padding-block: clamp(2.5rem, 7vw, 5rem) clamp(2rem, 5vw, 3.5rem); }
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+.eyebrow {
+  font: 700 .78rem/1 var(--f-body);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex; align-items: center; gap: .6rem;
+}
+.eyebrow::before { content: ""; width: 1.6rem; height: 2px; background: var(--gold); }
+.hero h1 {
+  font-size: clamp(2.6rem, 6.4vw, 4.6rem);
+  font-weight: 800;
+  line-height: .98;
+  letter-spacing: -.025em;
+  margin-top: 1.1rem;
+}
+.hero h1 .year {
+  display: inline-block;
+  color: var(--accent);
+  font-variation-settings: "opsz" 96;
+}
+.hero h1 .hand {
+  display: block;
+  font: 700 clamp(1.9rem, 4.2vw, 2.8rem)/1.1 var(--f-hand);
+  color: var(--muted);
+  letter-spacing: 0;
+  margin-top: .5rem;
+  transform: rotate(-2deg);
+  transform-origin: left;
+}
+.lede { margin-top: 1.4rem; font-size: 1.2rem; max-width: 34ch; color: var(--ink); }
+.facts {
+  display: flex; flex-wrap: wrap; gap: .5rem;
+  margin: 1.6rem 0 0; padding: 0; list-style: none;
+}
+.facts li {
+  font-size: .92rem; font-weight: 500;
+  padding: .45rem .85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+}
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 1.8rem; }
+.btn {
+  appearance: none; border: 0; cursor: pointer;
+  font: 700 1rem/1 var(--f-body);
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  background: var(--accent); color: var(--accent-ink);
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.cta-note { font-size: .92rem; color: var(--muted); }
+
+/* Collage */
+.board {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 100%;
+  width: 100%;
+}
+.tile {
+  position: absolute;
+  padding: 1rem 1.1rem;
+  background: var(--tile-1);
+  color: var(--tile-ink);
+  box-shadow: var(--shadow);
+  font: 600 clamp(1rem, 2.1vw, 1.3rem)/1.15 var(--f-display);
+  border-radius: 3px;
+  animation: settle .9s cubic-bezier(.2,.8,.2,1) both;
+}
+.tile small { display: block; font: 700 .7rem/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; opacity: .7; margin-bottom: .45rem; }
+.tile.hand { font: 700 clamp(1.4rem, 2.8vw, 1.8rem)/1.05 var(--f-hand); }
+.tile::after { /* washi tape */
+  content: ""; position: absolute; top: -9px; left: 50%;
+  width: 46px; height: 16px; margin-left: -23px;
+  background: var(--gold); opacity: .55; transform: rotate(-4deg);
+}
+.t1 { top: 4%;  left: 2%;  width: 46%; background: var(--tile-2); --r: -6deg; animation-delay: .05s; }
+.t2 { top: 2%;  right: 3%; width: 40%; background: var(--tile-3); --r: 5deg;  animation-delay: .15s; }
+.t3 { top: 36%; left: 18%; width: 62%; background: var(--surface); --r: -1.5deg; animation-delay: .25s; padding: 1.3rem 1.3rem 1.1rem; }
+.t4 { bottom: 6%; left: 0;  width: 42%; background: var(--tile-1); --r: 4deg; animation-delay: .35s; }
+.t5 { bottom: 3%; right: 2%; width: 46%; background: var(--tile-4); --r: -5deg; animation-delay: .45s; }
+.tile { transform: rotate(var(--r, 0deg)); }
+.t3 .big { font-size: clamp(1.4rem, 3.2vw, 2rem); font-weight: 800; letter-spacing: -.02em; }
+.t3 .sub { display: block; margin-top: .4rem; font: 500 .95rem/1.35 var(--f-body); color: var(--muted); }
+@keyframes settle {
+  from { transform: translateY(14px) rotate(calc(var(--r, 0deg) * 2)); }
+  to   { transform: rotate(var(--r, 0deg)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tile { animation: none; }
+  .btn { transition: none; }
+}
+
+/* ---------- Sections ---------- */
+section { padding-block: clamp(2.5rem, 6vw, 4rem); }
+.section-head { display: grid; gap: .6rem; max-width: 40rem; margin-bottom: 2rem; }
+.section-head h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.05; }
+.section-head p { color: var(--muted); max-width: 60ch; }
+
+.flow {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem;
+  counter-reset: part;
+}
+.flow li {
+  counter-increment: part;
+  padding: 1.25rem 1.2rem 1.35rem;
+  border-top: 2px solid var(--ink);
+  display: grid; gap: .45rem; align-content: start;
+}
+.flow li::before {
+  content: "Part " counter(part);
+  font: 700 .74rem/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase; color: var(--accent);
+}
+.flow h3 { font-size: 1.3rem; font-weight: 700; line-height: 1.15; }
+.flow p { color: var(--muted); font-size: .98rem; }
+.flow .mins { font: 700 1.25rem/1 var(--f-hand); color: var(--ink); margin-top: .2rem; }
+
+.bring { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.bring ul { margin: 0; padding: 0; list-style: none; display: grid; gap: .7rem; }
+.bring li { display: grid; grid-template-columns: 1.4rem minmax(0, 1fr); gap: .6rem; }
+.bring li::before { content: "✂"; color: var(--accent); font-size: 1rem; line-height: 1.6; }
+.bring .digital li::before { content: "◇"; }
+.bring h3 { font-size: 1.15rem; margin-bottom: .9rem; }
+.note-hand { font: 700 1.5rem/1.2 var(--f-hand); color: var(--muted); margin-top: 1.4rem; transform: rotate(-1.5deg); }
+.bring .pick {
+  background: var(--surface); border: 1.5px solid var(--accent); border-radius: 18px;
+  padding: 1.5rem 1.4rem; box-shadow: var(--shadow);
+}
+.bring .digital { padding-top: 1.5rem; }
+.badge {
+  display: inline-block; margin-bottom: .7rem;
+  font: 700 .72rem/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent-ink); background: var(--accent); padding: .4rem .65rem; border-radius: 999px;
+}
+.tip { margin-top: 1rem; font-size: .92rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: .9rem; }
+fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: .5rem; }
+legend { font-weight: 600; font-size: .95rem; margin-bottom: .5rem; padding: 0; }
+.choices { display: flex; flex-wrap: wrap; gap: .5rem; }
+.choice { position: relative; font-weight: 500; font-size: .95rem; }
+.choice input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.choice span {
+  display: block; padding: .6rem .95rem; border: 1.5px solid var(--line); border-radius: 999px;
+  background: var(--bg); color: var(--ink); cursor: pointer;
+}
+.choice input:checked + span { border-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
+.choice input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* ---------- Sign-up ---------- */
+.signup {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(1.5rem, 4vw, 3rem);
+}
+.signup h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.05; }
+.signup .intro { display: grid; gap: .9rem; align-content: start; }
+.signup .intro p { color: var(--muted); }
+form { display: grid; gap: 1.1rem; }
+.field { display: grid; gap: .4rem; }
+label { font-weight: 600; font-size: .95rem; }
+input[type="text"], input[type="email"] {
+  font: 400 1.05rem/1.3 var(--f-body);
+  color: var(--ink);
+  background: var(--bg);
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  padding: .85rem 1rem;
+  width: 100%;
+}
+input[type="text"]:focus, input[type="email"]:focus { outline: none; border-color: var(--accent); }
+.check { display: grid; grid-template-columns: 1.3rem minmax(0, 1fr); gap: .7rem; align-items: start; font-weight: 400; font-size: .95rem; color: var(--muted); cursor: pointer; }
+.check input { width: 1.15rem; height: 1.15rem; margin: .2rem 0 0; accent-color: var(--accent); }
+.error { color: var(--accent); font-size: .92rem; font-weight: 500; min-height: 1.2em; }
+.fine { font-size: .85rem; color: var(--muted); }
+.thanks { display: grid; gap: .8rem; align-content: center; text-align: left; }
+.thanks .hand { font: 700 2.2rem/1.1 var(--f-hand); color: var(--accent); }
+
+footer { padding-block: 2.5rem 3rem; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); margin-top: 1rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .hero-grid, .signup, .bring { grid-template-columns: minmax(0, 1fr); }
+  .board { max-width: 30rem; margin-inline: auto; }
+  .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .flow { grid-template-columns: minmax(0, 1fr); }
+  .tile { padding: .75rem .8rem; }
+  .t3 { padding: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">A free evening · December 2026</p>
+      <h1>The <span class="year">2027</span> Vision Board Social
+        <span class="hand">dream bigger, together</span>
+      </h1>
+      <p class="lede">An evening to dream bigger, get intentional, and design the year you actually want.</p>
+      <ul class="facts" aria-label="Event details">
+        <li>Free</li>
+        <li>Virtual</li>
+        <li>60–75 minutes</li>
+        <li>One evening in December</li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn" href="#join">Count me in</a>
+        <span class="cta-note">The date goes out to the interest list first.</span>
+      </div>
+    </div>
+
+    <div class="board" aria-hidden="true">
+      <div class="tile t1"><small>Travel</small>Lisbon in the spring</div>
+      <div class="tile t2 hand">say yes more often</div>
+      <div class="tile t3">
+        <span class="big">My 2027</span>
+        <span class="sub">Fewer obligations. More evenings like this one.</span>
+      </div>
+      <div class="tile t4 hand">Sunday dinners with the girls</div>
+      <div class="tile t5"><small>Body</small>Run the half marathon</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section aria-labelledby="evening">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="evening">How the evening goes</h2>
+        <p>Part reflection, part craft night, part catching up with women who also want next year to feel different. Cameras on if you like, pajamas welcome.</p>
+      </div>
+      <ol class="flow">
+        <li>
+          <h3>Look back at 2026</h3>
+          <p>A few guided prompts on what worked, what drained you, and what you're proud of.</p>
+          <span class="mins">~15 min</span>
+        </li>
+        <li>
+          <h3>Picture 2027</h3>
+          <p>Name how you want the year to feel, then the few things that would make it so.</p>
+          <span class="mins">~15 min</span>
+        </li>
+        <li>
+          <h3>Build your board</h3>
+          <p>Cut, paste, or drag images together while we talk. Paper or digital, your call.</p>
+          <span class="mins">~30 min</span>
+        </li>
+        <li>
+          <h3>Share one intention</h3>
+          <p>Say one thing out loud to the group. It's easier to keep a promise someone heard.</p>
+          <span class="mins">~10 min</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="bring">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="bring">Make it a real board</h2>
+        <p>A board you can hang on your wall and walk past every morning hits differently than a file on your phone. So I'm asking you to go physical if you can. I'll send reminders to help you get your supplies ready in time.</p>
+      </div>
+      <div class="bring">
+        <div class="pick">
+          <span class="badge">Recommended</span>
+          <h3>Physical board</h3>
+          <ul>
+            <li>A corkboard, foam board, or poster board (around 16×20 in. works well)</li>
+            <li>15–25 printed photos of places, people, and moments you want in 2027</li>
+            <li>Magazines to cut up, if you have any</li>
+            <li>Scissors, a glue stick or pushpins, and a marker for words</li>
+          </ul>
+          <p class="tip">Order your prints a week ahead from a drugstore photo counter or an online print service, or print them at home.</p>
+        </div>
+        <div class="digital">
+          <h3>Can't get a board in time?</h3>
+          <ul>
+            <li>Make a Canva board or a Pinterest board before the evening</li>
+            <li>Bring it along and add to it with us</li>
+            <li>Print it later and hang it up</li>
+          </ul>
+          <p class="note-hand">bring a friend, too</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="join" aria-labelledby="join-title">
+    <div class="wrap">
+      <div class="signup">
+        <div class="intro">
+          <h2 id="join-title">Want a seat?</h2>
+          <p>Add your name to the interest list. If enough of us are in, I'll send the date and the link. No cost, no catch.</p>
+        </div>
+
+        <form id="signup-form" novalidate>
+          <div class="field">
+            <label for="first-name">First name</label>
+            <input id="first-name" name="firstName" type="text" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required>
+          </div>
+          <fieldset>
+            <legend>How are you making your board?</legend>
+            <div class="choices">
+              <label class="choice" for="board-physical"><input id="board-physical" type="radio" name="boardType" value="physical" checked><span>Physical board</span></label>
+              <label class="choice" for="board-digital"><input id="board-digital" type="radio" name="boardType" value="digital"><span>Canva or Pinterest</span></label>
+              <label class="choice" for="board-unsure"><input id="board-unsure" type="radio" name="boardType" value="unsure"><span>Not sure yet</span></label>
+            </div>
+          </fieldset>
+          <label class="check" for="opt-in">
+            <input id="opt-in" name="optIn" type="checkbox">
+            <span>Also send me occasional emails about future events and ideas. Optional, and you can unsubscribe anytime.</span>
+          </label>
+          <p class="error" id="form-error" role="alert"></p>
+          <div class="cta-row" style="margin-top:0">
+            <button class="btn" id="submit-btn" type="submit">Save my spot</button>
+          </div>
+          <p class="fine">Your email is only used for this event unless you tick the box above.</p>
+        </form>
+
+        <div class="thanks" id="thanks" hidden>
+          <p class="hand">You're on the list!</p>
+          <p>Thanks, <strong id="thanks-name"></strong>. Watch your inbox for the date.</p>
+          <p id="thanks-next"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>The 2027 Vision Board Social</span>
+    <span>A free virtual evening · December 2026</span>
+  </div>
+</footer>
+
+<script>
+  // Where sign-ups are sent once the page is hosted publicly.
+  // Leave empty for preview: the form validates and shows the thank-you state but saves nothing.
+  // Example (Loops form endpoint): "https://app.loops.so/api/newsletter-form/YOUR_FORM_ID"
+  const SIGNUP_ENDPOINT = "";
+
+  const form = document.getElementById("signup-form");
+  const err = document.getElementById("form-error");
+  const btn = document.getElementById("submit-btn");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    err.textContent = "";
+    const firstName = form.firstName.value.trim();
+    const email = form.email.value.trim();
+    const optIn = form.optIn.checked;
+    const boardType = (form.querySelector('input[name="boardType"]:checked') || {}).value || "unsure";
+
+    if (!firstName) { err.textContent = "Add your first name so I know who's coming."; form.firstName.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = "That email doesn't look right. Check for a typo?"; form.email.focus(); return; }
+
+    btn.disabled = true;
+    btn.textContent = "Saving…";
+    try {
+      if (SIGNUP_ENDPOINT) {
+        const body = new URLSearchParams({
+          firstName, email,
+          userGroup: "2027-vision-board-social",
+          source: "vision-board-interest-page",
+          futureEmailsOptIn: String(optIn),
+          boardType
+        });
+        const res = await fetch(SIGNUP_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body
+        });
+        if (!res.ok) throw new Error("bad status " + res.status);
+      }
+      document.getElementById("thanks-name").textContent = firstName;
+      document.getElementById("thanks-next").textContent = boardType === "digital"
+        ? "Start pinning images that make you feel something. And if you can grab a board, I'd love for you to make a real one."
+        : "Grab your board this week and start collecting photos to print. I'll send reminders so you're ready.";
+      form.hidden = true;
+      document.getElementById("thanks").hidden = false;
+    } catch (x) {
+      err.textContent = "Something went wrong saving your spot. Please try again in a minute.";
+      btn.disabled = false;
+      btn.textContent = "Save my spot";
+    }
+  });
+</script>
+
+</body>
+</html>
